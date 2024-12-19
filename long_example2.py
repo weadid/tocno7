@@ -3,19 +3,19 @@ class Circle:
         self.radius = radius
 
     def area(self):
-        return 3.14159 * (self.radius ** 2)  # E501 line too long (40 > 79 characters)
+        return 3.14159 * (self.radius ** 2)
 
     def circumference(self):
-        return 2 * 3.14159 * self.radius  # E501 line too long (37 > 79 characters)
+        return 2 * 3.14159 * self.radius
 
 # Пример использования класса
 circle = Circle(10)
-print("Circle area:", circle.area())  # W291 trailing whitespace
-print("Circle circumference:", circle.circumference())  # E501 line too long (46 > 79 characters)
+print("Circle area:", circle.area())
+print("Circle circumference:", circle.circumference())
 
-# Ошибка в блоке except
+# Обработка ошибок при вводе
 try:
     radius = float(input("Enter the radius of the circle: "))
     circle = Circle(radius)
-except ValueError as TypeError:  # E999 SyntaxError: multiple exception types must be parenthesized
+except ValueError:  # Удалили TypeError и исправили на ValueError
     print("Invalid input")
