@@ -1,0 +1,32 @@
+name: Code Style Check
+
+on:
+  push:
+    branches:
+      - vetka
+
+  pull_request:
+    branches:
+      - vetka
+
+jobs:
+  checkstyle_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone repo
+        uses: actions/checkout@v2
+
+      - name: Set version Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12.6'
+
+      - name: Install dependencies
+        run: |
+          pip install flake8
+          
+      - name: Run linter
+        run: |
+          flake8 .
+          
+
